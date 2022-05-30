@@ -1,1 +1,1 @@
-# bhagyeshiremath-LeetCode-Solved-Problems
+LeetCode-Solved-Problems
