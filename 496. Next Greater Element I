@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class NextGreaterElementI
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int no1 = scn.nextInt();
+        int[] nums1 = new int[no1];
+        for (int i = 0; i < nums1.length; i++)
+        {
+            nums1[i] = scn.nextInt();
+        }
+        int no2 = scn.nextInt();
+        int[] nums2 = new int[no2];
+        for (int i = 0; i < nums2.length; i++)
+        {
+            nums2[i] = scn.nextInt();
+        }
+        int[] ans = nextGreaterElement(nums1, nums2);
+        for(int i : ans)
+        {
+            System.out.println(i);
+        }
+        scn.close();
+    }
+
+    public static int[] nextGreaterElement(int[] nums1, int[] nums2) 
+    {
+        boolean flag = false;
+        int[] ans = new int[nums1.length];
+        for(int i = 0; i < nums1.length; i++)
+        {
+            //flag = false;
+            for(int j = 0; j < nums2.length; j++)
+            {
+                if(nums2[j] == nums1[i])
+                {
+                    flag = true ;
+                }
+                if(flag && nums2[j] > nums1[i])
+                {
+                    ans[i] = nums2[j];
+                    break;
+                } 
+            }
+            if(ans[i] == 0)
+            {
+                ans[i] = -1;
+            }
+        }
+        return ans;
+    }
+}
