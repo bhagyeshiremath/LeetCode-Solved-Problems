@@ -1,0 +1,43 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class SubstringsOfSizeThreeDistinctChars
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        String s = scn.nextLine();
+        int ans = countGoodSubstrings(s);
+        System.out.println(ans);
+        scn.close();    
+    }
+    
+    public static int countGoodSubstrings(String s) 
+    {
+        //ArrayList<String> list = new ArrayList<String>();
+        HashSet<String> set = new HashSet<String>();
+        int count = 0 ;
+        int i = 0 ; 
+        int j = 2 ;
+        String temp = " ";
+        while(j < s.length())
+        {
+            temp  = s.substring(i, j+1);
+            set.add(temp);
+            count ++;
+            temp = " ";
+            i++;
+            j++;
+        }
+        
+        int a = 0 ;
+        for(String ss : set)
+        {
+            if(ss.charAt(a) ==  ss.charAt(a + 1) || ss.charAt(a) ==  ss.charAt(a + 2) || ss.charAt(a+1) ==  ss.charAt(a + 2))
+            {
+                count --;
+            }
+        }
+        return count ;
+    }
+}
