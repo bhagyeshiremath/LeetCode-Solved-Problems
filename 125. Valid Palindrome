@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.StringBuilder;
+
+public class ValidPalindrome
+{
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+        boolean ans = isPalindrome(str);
+        System.out.println(ans);
+        scn.close();
+    }
+
+    public static boolean isPalindrome(String s) 
+    {
+        s = s.replaceAll("[ ,.@#$`1%^&\\(\\)\\{\\}\\[\\]\\'\"*\\-+=!:;/_?]","").toLowerCase();
+        /**
+         * This is failing in :- ab_a expected op : true but getting false
+         * s = s.replaceAll("\\W+","").toLowerCase(); // https://stackoverflow.com/questions/13020246/remove-special-symbols-and-extra-spaces-and-replace-with-underscore-using-the-re
+        **/
+        StringBuilder ss =new StringBuilder(s);
+        if(s.equals(String.valueOf(ss.reverse())))
+        {
+            return true;
+        }
+        return false;
+    }
+}
