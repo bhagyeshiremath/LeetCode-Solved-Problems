@@ -1,0 +1,71 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MergeSortedArray
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int count1 = scn.nextInt();
+        int[] nums1 = new int[count1];
+        for(int i = 0; i < nums1.length; i++)
+        {
+            nums1[i] = scn.nextInt();
+        }
+        int m = scn.nextInt();
+        int count2 = scn.nextInt();
+        int[] nums2 = new int[count2];
+        for(int i = 0; i < nums2.length; i++)
+        {
+            nums2[i] = scn.nextInt();
+        }
+        int n = scn.nextInt();
+        int[] ans = merge(nums1 , m , nums2 , n);
+        for(int i : ans)
+        {
+            System.out.println(i);
+        }
+        scn.close();
+    }
+
+    public static int[] merge(int[] nums1, int m, int[] nums2, int n) 
+    {
+        int i = m - 1;
+        int j = n - 1;
+        int result = (m + n - 1);
+        while(i >= 0 && j >= 0)
+        {
+            if(nums1[i] > nums2[j])
+            {
+                nums1[result] = nums1[i];
+                i--;
+                result--;
+            }
+            else
+            {
+                nums1[result] = nums2[j];
+                j--;
+                result--; 
+            }
+        }
+
+        /**
+         * This while will excute if the nums1 array is empty or nums2 array is empty
+         * If we don't write this while conditions it will give ans as 0 or don't give any output WHICH IS INCOORECT 
+         */
+        while(i >= 0) 
+        {
+            nums1[result] = nums1[i];
+                    i--;
+                    result--;
+        }
+        while(j >= 0) 
+        {
+            nums1[result] = nums2[j];
+                    j--;
+                    result--;
+        }
+        Arrays.sort(nums1);
+        return nums1;
+    }
+}
