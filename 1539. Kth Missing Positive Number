@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.HashSet;
+
+public class KthMissingPositiveNumber
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int no = scn.nextInt();
+        int[] arr = new int[no];
+        for(int i = 0 ; i < arr.length ; i++)
+        {
+            arr[i] = scn.nextInt();
+        }
+        int k = scn.nextInt();
+        int ans = findKthPositive(arr, k);
+        System.out.println(ans);
+        scn.close();
+    }
+
+    public static int findKthPositive(int[] arr, int k) 
+    {
+        /*ArrayList<Integer> list = new ArrayList<Integer>();
+        HashSet<Integer> set = new HashSet<Integer>();
+        int start = 1;
+        int end = 1001;
+        while(start <= end)
+        {
+            list.add(start);
+            //System.out.println(list);
+            start++;
+        }
+        for(int i : arr)
+        {
+            set.add(i);
+        }
+        for(int i = list.size() - 1; i >= 0; i--)
+        {
+            if(set.contains(list.get(i)))
+            {
+                list.remove(list.get(i));
+                //System.out.println(list);
+            }
+        }
+        if(set.size() == -1)
+        {
+            return k ;
+        }
+        return list.get(k) - 1; */
+
+        int n = arr.length;
+        int left = 0;
+        int right = n - 1;
+        int missing = compute(arr[n-1] , n);
+        while(left <= right)
+        {
+            int mid = left + (right - left) / 2;
+            missing = compute(arr[mid], mid + 1);
+            if(missing >= k)
+            {
+               right = mid - 1;
+            }
+            else
+            {
+                left = mid + 1;
+            }
+        }
+        if(right == -1)
+        {
+            return k ;
+        }
+        return arr[right] + k - compute(arr[right] , right + 1);
+    }
+
+    static int compute(int actual , int expected)
+    {
+        return (actual - expected);
+    }
+}
