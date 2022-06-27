@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class ANumberAfterDoubleReversal
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int num = scn.nextInt();
+        System.out.println(isSameAfterReversals(num));
+        scn.close();
+    }
+
+    public static boolean isSameAfterReversals(int num) 
+    {
+        int rev1 = call(num);
+        int rev2 = call(rev1);
+        if(num == rev2)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static int call(int num)
+    {
+        int rev = 0 ;
+        while(num != 0)
+        {
+            int rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+        return rev;
+    }
+}
