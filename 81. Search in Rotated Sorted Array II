@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class SearchinRotatedSortedArrayII
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int no = scn.nextInt();
+        int[] nums = new int[no];
+        for(int i = 0; i < nums.length; i++)
+        {
+            nums[i] = scn.nextInt();
+        }
+        int target = scn.nextInt();
+        System.out.println(search(nums , target));
+        scn.close();
+    }
+
+    public static boolean search(int[] nums, int target) 
+    {
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] == target)
+            {
+                return true;
+            }
+        }
+        return false;  
+    }
+}
