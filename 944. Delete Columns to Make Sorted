@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class DeleteColumnstoMakeSorted
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int no = scn.nextInt();
+        String[] strs = new String[no];
+        Scanner scn1 = new Scanner(System.in);
+        for(int i=0; i< no; i++)
+        {
+            strs[i] = scn1.nextLine();
+        }
+        int ans = minDeletionSize(strs);
+        System.out.println(ans);
+        scn1.close();
+        scn.close();
+    }
+
+    public static int minDeletionSize(String[] strs) 
+    {
+        int count = 0 ;
+        for(int i=0; i<strs[0].length(); i++)
+        {
+            for(int j=0 ; j < strs.length - 1 ; j++)
+            {
+                if(strs[j].charAt(i) > strs[j+1].charAt(i))
+                {
+                    count ++;
+                    break ; // here break statment is necessary otherwise it will count everything double
+                }
+            }
+        }
+        return count;
+    }
+}
