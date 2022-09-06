@@ -1,0 +1,44 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class RearangeCharacters2MakeTargetString
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        String s = scn.nextLine();
+        String target = scn.nextLine();
+        int ans = rearrangeCharacters(s , target);
+        System.out.println(ans);
+        scn.close();
+    }
+
+    public static int rearrangeCharacters(String s, String target) 
+    {
+        int[] cS = new int[26];
+        int[] cTARGET = new int[26]; 
+        for(char c : s.toCharArray())
+        {
+            cS[c - 'a'] ++;
+        }
+
+        for(char c : target.toCharArray())
+        {
+            cTARGET[c - 'a'] ++;
+        }
+
+        int min = Integer.MAX_VALUE;
+        for(int i = 0 ; i < 26 ; i++)
+        {
+            if(cTARGET[i] == 0)
+            {
+                continue;
+            }
+            else
+            {
+                min = Math.min(min, cS[i] / cTARGET[i]);
+            }
+        }
+        return min ;
+    }
+}
