@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class IncreasingTripletSubsequence
+{
+    public static void main(String[] args) 
+    {
+        Scanner scn = new Scanner(System.in);
+        int no = scn.nextInt();
+        int[] nums = new int[no];
+        for(int i = 0; i < nums.length; i++)
+        {
+            nums[i] = scn.nextInt();
+        }
+        System.out.println(increasingTriplet(nums));
+        scn.close();
+    }
+
+    public static boolean increasingTriplet(int[] nums) 
+    {
+       if(nums.length < 3)
+       {
+            return false;
+       }
+       int i = Integer.MAX_VALUE;
+       int j = Integer.MAX_VALUE;
+       for(int x = 0; x < nums.length; x++)
+       {
+            if(nums[x] < i)
+            {
+                i = nums[x];
+            }
+            else if(nums[x] < j)
+            {
+                j = nums[x];
+            }
+            else
+            {
+                return true;
+            }
+       }
+       return false;
+    }
+}
