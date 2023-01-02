@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class MinimumMovestoConvertString
+{
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String s = scn.nextLine();
+        System.out.println(minimumMoves(s));
+        scn.close();
+    }
+
+    public static int minimumMoves(String s) 
+    {
+        int count = 0;
+        int i = 0;
+        while (i < s.length())
+        {
+            if(s.charAt(i) == 'X')
+            {
+                count ++;
+                i = i + 3;
+            }
+            else
+            {
+                i++;
+            }
+
+        }
+        return count;   
+    }
+}
