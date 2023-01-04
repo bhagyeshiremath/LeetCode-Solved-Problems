@@ -1,0 +1,48 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MinimumRoundstoCompleteAllTasks
+{
+    public static void main(String[] args)
+    {
+        Scanner scn = new Scanner(System.in);
+        int no = scn.nextInt();
+        int[] tasks = new int[no];
+        for (int i = 0; i < tasks.length; i++)
+        {
+            tasks[i] = scn.nextInt();
+        }
+        System.out.println(minimumRounds(tasks));
+        scn.close();
+    }
+
+    public static int minimumRounds(int[] tasks) 
+    {
+        Arrays.sort(tasks);
+        int result = 0;
+        int count = 0 ;
+        for (int i = 0; i < tasks.length; i++)
+        {
+            count ++;
+            if (i == tasks.length - 1 || tasks[i] != tasks[i + 1])
+            {     
+                if(count == 1)
+                {
+                    return -1;
+                }
+
+                result = result + count / 3;
+                //result = result + count / 2;
+
+                if(count % 3 != 0)
+                {
+                    result++;
+                }
+                count = 0;
+            }
+        }
+        return result;
+    }
+}
+
+// ref : https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/solutions/2995202/java-solution-with-2-approach/
