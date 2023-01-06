@@ -1,0 +1,34 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MaximumIceCreamBars
+{
+    public static void main(String[] args) {
+       Scanner scn = new Scanner(System.in);
+       int no = scn.nextInt();
+       int[] costs = new int[no];
+       for (int i = 0; i < no; i++)
+       {
+            costs[i] = scn.nextInt();
+       }
+       int coins = scn.nextInt();
+       System.out.println(maxIceCream(costs, coins));
+       scn.close();
+    }
+
+    public static int maxIceCream(int[] costs, int coins) 
+    {
+        Arrays.sort(costs);
+        int count = 0;
+        for (int i = 0; i < costs.length; i++)
+        {
+            coins -= costs[i];
+            if(coins < 0)
+            {
+                break;
+            }
+            count++;
+        }
+        return count;
+    }
+}
