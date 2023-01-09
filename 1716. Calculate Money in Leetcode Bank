@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class CalculateMoneyinLeetcodeBank
+{
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        System.out.println(totalMoney(n));
+        scn.close();
+    }
+
+    public static int totalMoney(int n) 
+    {
+        int sum = 0 ;
+        int a = 0 ;
+        int temp = 0;
+        for(int i = 1; i <= n; i++)
+        {
+            temp++;
+            sum = sum + temp + a;
+            if(i % 7 == 0)
+            {
+                temp = 0;
+                a++;
+                
+            }
+        }
+        return sum;
+    }
+}
