@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class CountIntegersWithEvenDigitSum
+{
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int num = scn.nextInt();
+        System.out.println(countEven(num));
+        scn.close();
+    }
+
+    public static int countEven(int num) {
+        int count = 0;
+        for(int i = 1; i <= num; i++)
+        { 
+            if(digitSum(i) % 2 == 0) 
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static int digitSum(int num)
+    {
+        int sum = 0;
+        int temp = 0;
+        while(num > 0)
+        {
+            temp = num % 10;
+            sum = sum + temp;
+            num = num / 10;
+        }
+        return sum;
+    }  
+}
